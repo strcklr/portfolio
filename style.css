@@ -1,0 +1,266 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main,
+.sidebar {
+  padding: 15px;
+}
+
+.main {
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 50%;
+}
+
+.sidebar {
+    width: 30%;
+    margin-left: 15%;
+    position: fixed;
+    top: 8%;
+
+}
+
+body {
+  font-family: "PT Mono", serif;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+#about {
+    font-size: 18px;
+}
+
+p, li {
+    color: #ABABAB;
+}
+
+li {
+    font-size: 18px;
+}
+
+h1 {
+    margin: 0;
+}
+
+h3 {
+    margin-top: 0px;
+    font-size: 22px;
+}
+
+.name_heading {
+    font-size: 40px;
+    margin: 0;
+}
+
+.description {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+form {
+    width: 100%;
+}
+
+input[type=text], input[type=email], textarea {
+    font-family: "PT Mono", serif;
+    background-color: #343434;
+    color: #C8C8C8;
+    border-radius: 8px;
+    border: none;
+    
+    padding: 12px 20px;
+    resize: none;
+}
+
+#name {
+    margin-right: 5px;
+}
+
+.inputs {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+/*
+.small_input {
+    display: flex;
+    float: left;
+  box-sizing: border-box;
+    
+}
+*/
+
+.big_input {
+    clear: both;
+    display: block;
+    width: 100%;
+    min-height: 25vh;
+    text-align: start;
+    
+  box-sizing: border-box;
+}
+
+#form_submission {
+    font-family: "PT Mono", serif;
+    font-size: 20px;
+    background-color: #458FFF;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.socials {
+    width: 100%;
+}
+
+i {
+    opacity: 80%;
+    color: #ABABAB;
+}
+
+i:hover {
+    opacity: 100%;
+}
+
+.title {
+    font-size: 18px;
+    color: #ABABAB;
+}
+
+.company_container {
+}
+
+.company_name {
+    grid-column: 2/5;
+    grid-row: 1;
+}
+
+.position_entry {
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+    grid-column: 1/5;
+    grid-row: 2/4;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: repeat(auto-fit, minmax(auto, 1px)) 1fr;
+}
+
+.position_entry:hover {
+    transition: 0.8s;
+    background-color: #222222;
+    color: white;
+}
+
+.timeline {
+    color: #ABABAB;
+    grid-column: 1;
+    grid-row: 1/5;
+}
+
+.job {
+    margin-right: 10%;
+    grid-column: 2/5;
+    grid-row: 1/5;
+}
+
+.job_description {
+    padding: 5px;
+    margin: 2px;
+}
+
+li {
+    padding: 5px;
+}
+
+/* Begin language tags */
+
+.tags {
+    text-align: right;
+}
+
+.tag {
+    display: inline;
+    font-size: 14px;
+    background-color: red;
+    border-radius: 12px;
+    padding: 2px 6px 2px 6px;
+    color: white;
+    opacity: 80%;
+    flex-wrap: nowrap;
+}
+
+.tag:hover {
+    transition: 0.3s;
+    opacity: 100%;
+    cursor: pointer;
+}
+
+#groovy {
+    background-color: #4298B8;
+}
+
+#kotlin {
+    background-color: #7F52FF;
+}
+
+#java {
+    background-color: #F29111;
+}
+
+#terraform {
+    background-color: #7B42BC;
+}
+
+#ratpack {
+    background-color: #FDC329;
+}
+
+#android {
+    background-color: #34A853;
+}
+
+#c {
+    background-color: dodgerblue;
+}
+
+#cpp {
+    background-color: #6544D2;
+}
+
+#flutter {
+    background-color: #27B0EE;
+}
+
+#dart {
+    background-color: #0C6291;
+}
+
+#spinnaker {
+    background-color: cornflowerblue;
+}
+
+#aws {
+    background-color: orange;
+}
+
+#python {
+    background-color: #234A6C;
+}
+
+/* End language tags */
+
+footer {
+    text-align: center;
+}
