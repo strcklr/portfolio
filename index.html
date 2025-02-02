@@ -1,229 +1,345 @@
 <!doctype html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Chase Strickler</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
-      rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="https://kit.fontawesome.com/91dd740631.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  </head>
+        <title>Chase Strickler</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script src="https://kit.fontawesome.com/91dd740631.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    </head>
 
-  <body>
-    <!-- Our page's main content -->
-    <main>
-        <div class="wrapper">
-            <div class="sidebar">
-                <div class="name_heading">
-                    <h1>Chase Strickler</h1>
-                </div>
-                <div class="sub_heading">
-                    <h2>Software Engineer | <span id="motto"></span></h2>
-                    <script>
-                    var typed = new Typed('#motto', {
-                        strings: [
-                            '🚲 Cycling Enthusiast', 
-                            '☕ Coffee Drinker',
-                            '🐕 Dog Dad',
-                            '🐺 Timberwolves #1 Fan',
-                            '🎲 Board Game Geek',
-                            '🎮 FPS Pro',
-                            '🥪 Sandwich Artist',
-                            '🧙‍♂️ Wizard',
-                            '🐒 Code Monkey',
-                            '🐉 Dragon Slayer',
-                            '$ sudo rm -rf',   
-                        ],
-                        typeSpeed: 70,
-                        shuffle: false,
-                        backDelay: 2000,
-                    });
-                    </script>
-                </div>
-                
-<!--
-                <div class="socials">
-                    <i class="fa-brands fa-github fa-lg" alt="GitHub"><a href="https://github.com/strcklr"></a></i>
-                    <i href="https://linkedin.com/in/chasestrickler" class="fa-brands fa-linkedin fa-lg" alt="LinkedIn"></i>
-                </div>
--->
-                
-                <div class="description">
-                    <p id="about">
-                        I’m a software engineer with a keen regard for architecture, designing solutions that balance scalability, performance, and maintainability to meet complex business needs. 
-                    </p>
-                    
-                </div>
-                <form>
-                    <div class="inputs">
-                        <input id="name" class="small_input" type="text" name="q" placeholder="Name" />
-                        <input id="email" class="small_input" type="email" name="q" placeholder="Email" />
+    <body>
+        <!-- Our page's main content -->
+        <main>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <div class="name_heading">
+                        <h1>Chase Strickler</h1>
                     </div>
-                    <textarea class="big_input" placeholder="Message..."></textarea>
-                    <input id="form_submission" type="submit" value="Get in touch" />
-                </form>
+                    <div class="sub_heading">
+                        <h2>Software Engineer | <span id="motto"></span></h2>
+                        <script>
+                            var typed = new Typed("#motto", {
+                                strings: [
+                                    "🚲 Cycling Enthusiast",
+                                    "☕ Coffee Drinker",
+                                    "🐕 Dog Dad",
+                                    "🐺 Timberwolves #1 Fan",
+                                    "🎲 Board Game Geek",
+                                    "🎮 FPS Pro",
+                                    "🥪 Sandwich Artist",
+                                    "🧙‍♂️ Wizard",
+                                    "🐒 Code Monkey",
+                                    "🐉 Dragon Slayer",
+                                    "$ sudo rm -rf"
+                                ],
+                                typeSpeed: 70,
+                                shuffle: false,
+                                backDelay: 2000
+                            });
+                        </script>
+                    </div>
+
+                    <div class="socials">
+                        <a href="https://github.com/strcklr"><i class="fa-brands fa-github fa-lg" alt="GitHub"></i></a>
+                        <a href="https://linkedin.com/in/chasestrickler"
+                            ><i class="fa-brands fa-linkedin fa-lg" alt="LinkedIn"></i
+                        ></a>
+                    </div>
+
+                    <div class="description">
+                        <p id="about">
+                            I’m a software engineer with a keen regard for architecture, designing solutions that
+                            balance scalability, performance, and maintainability to meet complex business needs.
+                        </p>
+                    </div>
+                    <form>
+                        <div class="inputs">
+                            <input id="name" class="small_input" type="text" name="q" placeholder="Name" />
+                            <input id="email" class="small_input" type="email" name="q" placeholder="Email" />
+                        </div>
+                        <textarea class="big_input" placeholder="Message..."></textarea>
+                        <input class="btn" id="form_submission" type="submit" value="Get in touch" />
+                    </form>
+                </div>
+                <div class="main">
+                    <div class="company_container">
+                        <div class="position_entry">
+                            <div class="timeline">August 2024 - Present</div>
+                            <div class="job">
+                                <div class="position">
+                                    <h3>
+                                        Samsung SmartThings
+                                        <span class="title"
+                                            >- Staff Software Engineer
+                                            <a href="https://smartthings.com"
+                                                ><i class="link fa fa-external-link" alt="SmartThings"></i></a
+                                        ></span>
+                                    </h3>
+                                </div>
+
+                                <ul class="job_description">
+                                    <li>
+                                        Lead technical implementation of multiple urgently requested, highly visible
+                                        features simultaneously requiring close collaboration with multiple teams on
+                                        design and constantly changing requirements
+                                    </li>
+                                    <li>
+                                        Provide mentorship to junior and senior engineers while serving in a technical
+                                        team lead capacity
+                                    </li>
+                                    <li>
+                                        Participate regularly in architectural discussions around platform design
+                                        decisions, including rate limiting, resource quotas, and microservice resiliency
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li class="tag kotlin">Kotlin</li>
+                                    <li class="tag groovy">Groovy</li>
+                                    <li class="tag java">Java</li>
+                                    <li class="tag python">Python</li>
+                                    <li class="tag ratpack">Ratpack</li>
+                                    <li class="tag terraform">Terraform</li>
+                                    <li class="tag spinnaker">Spinnaker</li>
+                                    <li class="tag aws">Amazon Web Services</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="position_entry">
+                            <div class="timeline">August 2023 - August 2024</div>
+                            <div class="job">
+                                <div class="position">
+                                    <h3>
+                                        Samsung SmartThings
+                                        <span class="title"
+                                            >- Senior Software Engineer
+                                            <a href="https://smartthings.com"
+                                                ><i class="link fa fa-external-link" alt="SmartThings"></i></a
+                                        ></span>
+                                    </h3>
+                                </div>
+
+                                <ul class="job_description">
+                                    <li>
+                                        Maintain suite of client oriented services handling &gt; 1 million requests per
+                                        minute
+                                    </li>
+                                    <li>
+                                        Design and support new and existing REST APIs catered to Samsung SmartThings
+                                        first party clients
+                                    </li>
+                                    <li>
+                                        Manage documentation and code generation across multiple Client API versions,
+                                        ensuring backward compatibility
+                                    </li>
+                                    <li>
+                                        Perform routine microservice infrastructure tasks such as increasing instance
+                                        sizes, changing CI pipeline configurations, and updating deployment steps using
+                                        Terraform, Jenkins and Spinnaker
+                                    </li>
+                                    <li>
+                                        Support localizations to increase accessibility for new feature which provides a
+                                        summary of a user’s location
+                                    </li>
+                                    <li>
+                                        Participate in first engineer swap at SmartThings as a means of increasing
+                                        cross-team collaboration, transferring knowledge, and developing careers
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li class="tag kotlin">Kotlin</li>
+                                    <li class="tag groovy">Groovy</li>
+                                    <li class="tag java">Java</li>
+                                    <li class="tag ratpack">Ratpack</li>
+                                    <li class="tag terraform">Terraform</li>
+                                    <li class="tag spinnaker">Spinnaker</li>
+                                    <li class="tag aws">Amazon Web Services</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="position_entry">
+                            <div class="timeline">August 2021 - August 2023</div>
+                            <div class="job">
+                                <div class="position">
+                                    <h3>
+                                        Samsung SmartThings
+                                        <span class="title"
+                                            >- Software Engineer
+                                            <a href="https://smartthings.com"
+                                                ><i class="link fa fa-external-link" alt="SmartThings"></i></a
+                                        ></span>
+                                    </h3>
+                                </div>
+
+                                <ul class="job_description">
+                                    <li>
+                                        Implement APIs that aggregate resources on an account to reduce overhead for
+                                        clients
+                                    </li>
+                                    <li>
+                                        Transfer cloud architecture knowledge to principal engineer via weekly sync
+                                        meetings for collaborative career growth
+                                    </li>
+                                    <li>
+                                        Provide 24/7 on-call support during my week-long shift which includes responding
+                                        to incidents, triaging bug tickets and working through ops/infrastructure
+                                        related tasks
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li class="tag kotlin">Kotlin</li>
+                                    <li class="tag groovy">Groovy</li>
+                                    <li class="tag java">Java</li>
+                                    <li class="tag ratpack">Ratpack</li>
+                                    <li class="tag terraform">Terraform</li>
+                                    <li class="tag spinnaker">Spinnaker</li>
+                                    <li class="tag aws">Amazon Web Services</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="company_container">
+                        <div class="position_entry">
+                            <div class="timeline">November 2020 - May 2021</div>
+                            <div class="job">
+                                <div class="position">
+                                    <h3>
+                                        Airborne Athletics
+                                        <span class="title"
+                                            >- Software Developer
+                                            <a href="https://www.drdishbasketball.com/m"
+                                                ><i class="link fa fa-external-link" alt="Dr. Dish Basketball"></i></a
+                                        ></span>
+                                    </h3>
+                                </div>
+
+                                <ul class="job_description">
+                                    <li>
+                                        Implement CI/CD pipeline using Bitbucket Pipelines and Docker containers to
+                                        automate application build process
+                                    </li>
+                                    <li>
+                                        Collaborate with contractors to build custom AOSP images compatible with MTK
+                                        Flashtool resulting in a 90% speed up in the factory flash process
+                                    </li>
+                                    <li>
+                                        Implement features based on UX diagrams in timely fashion to deliver new product
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li class="tag dart">Dart</li>
+                                    <li class="tag flutter">Flutter</li>
+                                    <li class="tag java">Java</li>
+                                    <li class="tag android">Android Open Source Project</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company_container">
+                        <div class="position_entry">
+                            <div class="timeline">June 2019 - November 2020</div>
+                            <div class="job">
+                                <div class="position">
+                                    <h3>
+                                        Xirgo Technologies, LLC
+                                        <span class="title"
+                                            >- Software Engineer
+                                            <a href="https://xirgo.com/"
+                                                ><i
+                                                    class="link fa fa-external-link"
+                                                    alt="Xirgo Technologies, LLC"></i></a
+                                        ></span>
+                                    </h3>
+                                </div>
+
+                                <ul class="job_description">
+                                    <li>
+                                        Pioneer and managed Linux desktop on Ubuntu 18.0.4 used by the team to build
+                                        Android system images and wrote a migration plan to cloud-based builds using
+                                        Docker, Terraform, and Amazon EC2
+                                    </li>
+                                    <li>
+                                        Support effort in updating device operating system images for pre-production
+                                        phase devices by building system images and troubleshooting over-the-air (OTA)
+                                        update issues
+                                    </li>
+                                    <li>
+                                        Develop improvements to imaging algorithm including support for image
+                                        thumbnailing, averaging, and various improvements to the image capturing state
+                                        machine
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li class="tag java">Java</li>
+                                    <li class="tag c">C</li>
+                                    <li class="tag cpp">C++</li>
+                                    <li class="tag python">Python</li>
+                                    <li class="tag android">Android Open Source Project</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="position_entry">
+                            <div class="timeline">May 2019 - June 2020</div>
+                            <div class="job">
+                                <div class="position">
+                                    <h3>
+                                        Xirgo Technologies, LLC
+                                        <span class="title"
+                                            >- Intern, Software Engineering
+                                            <a href="https://xirgo.com/"
+                                                ><i
+                                                    class="link fa fa-external-link"
+                                                    alt="Xirgo Technologies, LLC"></i></a
+                                        ></span>
+                                    </h3>
+                                </div>
+
+                                <ul class="job_description">
+                                    <li>
+                                        Pioneer and managed Linux desktop on Ubuntu 18.0.4 used by the team to build
+                                        Android system images and wrote a migration plan to cloud-based builds using
+                                        Docker, Terraform, and Amazon EC2
+                                    </li>
+                                    <li>
+                                        Support effort in updating device operating system images for pre-production
+                                        phase devices by building system images and troubleshooting over-the-air (OTA)
+                                        update issues
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li class="tag java">Java</li>
+                                    <li class="tag c">C</li>
+                                    <li class="tag cpp">C++</li>
+                                    <li class="tag python">Python</li>
+                                    <li class="tag android">Android Open Source Project</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="resume_wrapper">
+                    <button class="btn resume_btn"><i class="fa-solid fa-file-pdf" style="color: white;"></i> Resume</button>
+                </div>
+                </div>
             </div>
-            <div class="main">
-                <div class="company_container">
-                    <div class="position_entry">
-                        <div class="timeline">August 2024 - Present</div>
-                        <div class = "job">
-                            <div class="position">
-                                <h3>Samsung SmartThings <span class="title">- Staff Software Engineer</span></h3>
-                            </div>
+        </main>
 
-                            <ul class="job_description">
-                                <li>Lead technical implementation of multiple urgently requested, highly visible features simultaneously requiring close collaboration with multiple teams on design and constantly changing requirements</li>
-                                <li>Provide mentorship to junior and senior engineers while serving in a technical team lead capacity</li>
-                                <li>Participate regularly in architectural discussions around platform design decisions, including rate limiting, resource quotas, and microservice resiliency</li>
-                            </ul>
-                            <ul class="tags">
-                                <li class="tag" id="kotlin">Kotlin</li>
-                                <li class="tag" id="groovy">Groovy</li>
-                                <li class="tag" id="java">Java</li>
-                                <li class="tag" id="python">Python</li>
-                                <li class="tag" id="ratpack">Ratpack</li>
-                                <li class="tag" id="terraform">Terraform</li>
-                                <li class="tag" id="spinnaker">Spinnaker</li>
-                                <li class="tag" id="aws">Amazon Web Services</li>
-                            </ul>
-                        </div>
-                    </div>
+        <!-- The footer that is used across all the pages of our website -->
 
-                    <div class="position_entry">
-                        <div class="timeline">August 2023 - August 2024</div>
-                        <div class = "job">
-                            <div class="position">
-                                <h3>Samsung SmartThings <span class="title">- Senior Software Engineer</span></h3>
-                            </div>
-
-                            <ul class="job_description">
-                                <li>Maintain suite of client oriented services handling > 1 million requests per minute</li>
-                                <li>Design and support new and existing REST APIs catered to Samsung SmartThings first party clients</li>
-                                <li>Manage documentation and code generation across multiple Client API versions, ensuring backward compatibility</li>
-                                <li>Perform routine microservice infrastructure tasks such as increasing instance sizes, changing CI pipeline configurations, and updating deployment steps using Terraform, Jenkins and Spinnaker</li>
-                                <li>Support localizations to increase accessibility for new feature which provides a summary of a user’s location</li>
-                                <li>Participate in first engineer swap at SmartThings as a means of increasing cross-team collaboration, transferring knowledge, and developing careers</li>
-                            </ul>
-                            <ul class="tags">
-                                <li class="tag" id="kotlin">Kotlin</li>
-                                <li class="tag" id="groovy">Groovy</li>
-                                <li class="tag" id="java">Java</li>
-                                <li class="tag" id="ratpack">Ratpack</li>
-                                <li class="tag" id="terraform">Terraform</li>
-                                <li class="tag" id="spinnaker">Spinnaker</li>
-                                <li class="tag" id="aws">Amazon Web Services</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="position_entry">
-                        <div class="timeline">August 2021 - August 2023</div>
-                        <div class = "job">
-                            <div class="position">
-                                <h3>Samsung SmartThings <span class="title">- Software Engineer</span></h3>
-                            </div>
-
-                            <ul class="job_description">
-                                <li>Implement APIs that aggregate resources on an account to reduce overhead for clients</li>
-                                <li>Transfer cloud architecture knowledge to principal engineer via weekly sync meetings for collaborative career growth</li>
-                                <li>Provide 24/7 on-call support during my week-long shift which includes responding to incidents, triaging bug tickets and working through ops/infrastructure related tasks</li>
-                            </ul>
-                            <ul class="tags">
-                                <li class="tag" id="kotlin">Kotlin</li>
-                                <li class="tag" id="groovy">Groovy</li>
-                                <li class="tag" id="java">Java</li>
-                                <li class="tag" id="ratpack">Ratpack</li>
-                                <li class="tag" id="terraform">Terraform</li>
-                                <li class="tag" id="spinnaker">Spinnaker</li>
-                                <li class="tag" id="aws">Amazon Web Services</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="company_container">
-                    <div class="position_entry">
-                        <div class="timeline">November 2020 - May 2021</div>
-                        <div class = "job">
-                            <div class="position">
-                                <h3>Airborne Athletics <span class="title">- Software Developer</span></h3>
-                            </div>
-
-                            <ul class="job_description">
-                                <li>Implement CI/CD pipeline using Bitbucket Pipelines and Docker containers to automate application build process</li>
-                                <li>Collaborate with contractors to build custom AOSP images compatible with MTK Flashtool resulting in a 90% speed up in the factory flash process</li>
-                                <li>Implement features based on UX diagrams in timely fashion to deliver new product</li>
-                            </ul>
-                            <ul class="tags">
-                                <li class="tag" id="dart">Dart</li>
-                                <li class="tag" id="flutter">Flutter</li>
-                                <li class="tag" id="java">Java</li>
-                                <li class="tag" id="android">Android Open Source Project</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="company_container">
-                    <div class="position_entry">
-                        <div class="timeline">June 2019 - November 2020</div>
-                        <div class = "job">
-                            <div class="position">
-                                <h3>Xirgo Technologies, LLC <span class="title">- Software Engineer</span></h3>
-                            </div>
-
-                            <ul class="job_description">
-                                <li>Pioneer and managed Linux desktop on Ubuntu 18.0.4 used by the team to build Android system images and wrote a migration plan to cloud-based builds using Docker, Terraform, and Amazon EC2</li>
-                                <li>Support effort in updating device operating system images for pre-production phase devices by building system images and troubleshooting over-the-air (OTA) update issues</li>
-                                <li>Develop improvements to imaging algorithm including support for image thumbnailing, averaging, and various improvements to the image capturing state machine</li>
-                            </ul>
-                            <ul class="tags">
-                                <li class="tag" id="java">Java</li>
-                                <li class="tag" id="c">C</li>
-                                <li class="tag" id="cpp">C++</li>
-                                <li class="tag" id="python">Python</li>
-                                <li class="tag" id="android">Android Open Source Project</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="position_entry">
-                        <div class="timeline">May 2019 - June 2020</div>
-                        <div class = "job">
-                            <div class="position">
-                                <h3>Xirgo Technologies, LLC <span class="title">- Intern, Software Engineering</span></h3>
-                            </div>
-
-                            <ul class="job_description">
-                                <li>Pioneer and managed Linux desktop on Ubuntu 18.0.4 used by the team to build Android system images and wrote a migration plan to cloud-based builds using Docker, Terraform, and Amazon EC2</li>
-                                <li>Support effort in updating device operating system images for pre-production phase devices by building system images and troubleshooting over-the-air (OTA) update issues</li>
-                            </ul>
-                            <ul class="tags">
-                                <li class="tag" id="java">Java</li>
-                                <li class="tag" id="c">C</li>
-                                <li class="tag" id="cpp">C++</li>
-                                <li class="tag" id="python">Python</li>
-                                <li class="tag" id="android">Android Open Source Project</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- The footer that is used across all the pages of our website -->
-
-    <footer>
-      <p>©Copyright 2025 by Chase Strickler. All rights reserved.</p>
-    </footer>
-  </body>
+        <footer>
+            <p>©Copyright 2025 by Chase Strickler. All rights reserved.</p>
+        </footer>
+    </body>
 </html>
