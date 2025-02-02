@@ -225,12 +225,12 @@ li {
 }
 
 a {
-    color: #5c68c9;
+    color: #458FFF;
+    text-decoration: none;
 }
 
 a:visited {
-    color: #458FFF;
-    text-decoration: none;
+    color: #5c68c9;
 }
 /* Begin language tags */
 
