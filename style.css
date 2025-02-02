@@ -63,12 +63,12 @@ h3 {
     margin: 5 0 5 0;
     min-height: 80px;
     padding: 5 0 5 0;
-    vertical-align:middle;
     top: 0;
 }
 
 .motto {
     vertical-align: top;
+    position: fixed;
 }
 
 
@@ -316,9 +316,11 @@ footer {
 @media screen and (max-width:1400px) {
     .wrapper {
         display: block;
+        margin: 5px 22px;
+    }
 
-        margin-left: 10px;
-        margin-right: 25px;
+    body {
+        margin: 0;
     }
 
     .sidebar {
@@ -326,11 +328,15 @@ footer {
         top: 0;
         width: 100%;
         margin: 0;
-        margin-right: 5px;
+        padding-left: 0;
+
     }
     .main {
         width: 100%;
         margin-top: 2%;
-        margin-left: 10px;
+        margin-left: 0;
+        padding-left: 0;
     }
+
+
 }
