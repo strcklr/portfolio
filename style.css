@@ -86,7 +86,6 @@ input[type=text], input[type=email], textarea {
     border: none;
     
     padding: 12px 20px;
-    resize: none;
 }
 
 #name {
@@ -99,15 +98,6 @@ input[type=text], input[type=email], textarea {
     width: 100%;
     margin-bottom: 5px;
 }
-
-/*
-.small_input {
-    display: flex;
-    float: left;
-  box-sizing: border-box;
-    
-}
-*/
 
 .big_input {
     clear: both;
@@ -368,12 +358,27 @@ footer {
     }
 
     h1 {
-        font-size: 64px;
+        font-size: 50px;
     }
 
     #motto {
         overflow: hidden;
         top: 0;
         display: none;
+    }
+
+    .inputs {
+        display: flex;
+        justify-content: space-between;
+        width: inherit;
+    }
+
+    .small_input {
+        margin: 5px 2px 0 0;
+        width: 50%;
+    }
+
+    .small_input, .big_input {
+        font-size: medium;
     }
 }
