@@ -3,14 +3,8 @@
   justify-content: space-between;
 }
 
-.main,
-.sidebar {
-  padding: 15px;
-}
-
 .main {
     width: 50%;
-    margin-top: 2%;
     margin-left: 50%;
 }
 
@@ -187,6 +181,8 @@ i:hover {
 .job_description {
     padding: 5px;
     margin: 2px;
+    margin-left: 0;
+    padding-left: 2px;
 }
 
 li {
@@ -335,8 +331,8 @@ footer {
 @media screen and (max-width:1400px) {
     .wrapper {
         display: block;
-        margin: 5px 22px;
-        margin-right: 0;
+        margin: 5px 10px;
+        padding: 15px;
     }
 
     body {
@@ -382,5 +378,36 @@ footer {
 
     .small_input, .big_input {
         font-size: medium;
+    }
+
+    .position_entry {
+        display: block;
+    }
+
+    .timeline {
+        margin-bottom: 5px;
+    }
+
+    #form_submission {
+        margin-bottom: 0;
+    }
+
+    .sub_heading {
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    h2 {
+        padding: 0;
+        margin: 0;
+    }
+
+    .description {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .job {
+        margin-right: 5px;
     }
 }
