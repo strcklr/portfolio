@@ -63,12 +63,14 @@ h3 {
     margin: 5 0 5 0;
     min-height: 50px;
     padding: 5 0 5 0;
-    top: 0;
 }
 
-.motto {
-    vertical-align: top;
-    position: fixed;
+h2 {
+    overflow: hidden;
+    height: 50px;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 
