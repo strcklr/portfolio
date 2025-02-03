@@ -336,6 +336,7 @@ footer {
     .wrapper {
         display: block;
         margin: 5px 22px;
+        margin-right: 0;
     }
 
     body {
@@ -355,6 +356,7 @@ footer {
         margin-top: 2%;
         margin-left: 0;
         padding-left: 0;
+        margin-right: 0;
     }
 
     h1 {
