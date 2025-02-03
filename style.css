@@ -410,4 +410,10 @@ footer {
     .job {
         margin-right: 5px;
     }
+
+    .link {
+        opacity: 100%;
+    }
+
+
 }
