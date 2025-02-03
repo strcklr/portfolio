@@ -44,6 +44,11 @@ h1 {
     margin: 0;
 }
 
+h2 {
+    display: inline;
+    vertical-align: middle;
+}
+
 h3 {
     margin-top: 0;
     font-size: 22px;
@@ -61,18 +66,13 @@ h3 {
 
 .sub_heading {
     margin: 5 0 5 0;
-    min-height: 50px;
+    height: 45px;
     padding: 5 0 5 0;
-}
-
-h2 {
+    display: inline-block;
+    margin-bottom: 10px;
+    resize: none;
     overflow: hidden;
-    height: 50px;
-    vertical-align: middle;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
-
 
 form {
     width: 100%;
@@ -315,6 +315,33 @@ footer {
     text-align: center;
 }
 
+@media screen and (max-width:1900px) {
+
+    .sidebar {
+        top: 0;
+        width: 45%;
+        margin: 0;
+        margin-left: 2%;
+        margin-top: 2%;
+        padding-left: 0;
+
+    }
+    .main {
+        width: 50%;
+        margin-top: 2%;
+        margin-left: 50%;
+        padding-left: 0;
+    }
+
+    h1 {
+        font-size: 72px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+}
+
 @media screen and (max-width:1400px) {
     .wrapper {
         display: block;
@@ -340,5 +367,13 @@ footer {
         padding-left: 0;
     }
 
+    h1 {
+        font-size: 64px;
+    }
 
+    #motto {
+        overflow: hidden;
+        top: 0;
+        display: none;
+    }
 }
