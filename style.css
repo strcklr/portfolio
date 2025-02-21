@@ -299,6 +299,7 @@ a:visited {
 
 footer {
     text-align: center;
+    padding-bottom: 15px;
 }
 
 @media screen and (max-width:1900px) {
@@ -414,6 +415,4 @@ footer {
     .link {
         opacity: 100%;
     }
-
-
 }
