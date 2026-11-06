@@ -124,7 +124,13 @@
                 <h3 class="label">Technical skills</h3>
                 <dl class="skills">
                     {% for s in skills %}
-                    <div><dt>{{ s.name }}</dt><dd>{{ s.text }}</dd></div>
+                    <div>
+                        <dt>{{ s.name }}</dt>
+                        {% for line in s.lines %}
+                        <dd>{% for k in line %}<span class="kw{{ ' kw-long' if k|length > 18 }}">{{ k }}</span>{{ ", " if not loop.last }}{% endfor %}</dd>
+                        {% endfor %}
+                        {% if s.note %}<dd class="dim">{{ s.note }}</dd>{% endif %}
+                    </div>
                     {% endfor %}
                 </dl>
             </div>
