@@ -163,6 +163,8 @@ def view_model(data: dict, today: dt.date) -> dict:
         "skills": skills(data.get("skills", [])),
         "education": data.get("education", []),
         "pdf": PDF_NAME,
+        # Official brand marks, used when their SVGs are in images/ (otherwise generic icons).
+        "brand_icons": {name: (ROOT / "images" / f"{name}.svg").is_file() for name in ("github", "linkedin")},
         "year": today.year,
     }
 

@@ -50,13 +50,15 @@
         <div class="links">
             {% if github %}
             <a class="pill" href="{{ github }}">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                <span class="pill-label">GitHub</span></a>
+                {% if brand_icons.github %}<span class="brand-icon" style="--icon: url('images/github.svg')" aria-hidden="true"></span>
+                {% else %}<svg aria-hidden="true" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                {% endif %}<span class="pill-label">GitHub</span></a>
             {% endif %}
             {% if linkedin %}
             <a class="pill" href="{{ linkedin }}">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-                <span class="pill-label">LinkedIn</span></a>
+                {% if brand_icons.linkedin %}<span class="brand-icon" style="--icon: url('images/linkedin.svg')" aria-hidden="true"></span>
+                {% else %}<svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                {% endif %}<span class="pill-label">LinkedIn</span></a>
             {% endif %}
             {# Hidden on phones to save space; the Resume section has its own Download PDF button. #}
             <a class="pill pill-pdf" href="{{ pdf }}">
