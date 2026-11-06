@@ -186,14 +186,14 @@ a.tag:hover .ext, a.tag:focus-visible .ext { max-width: 1em; opacity: 0.8; margi
 .company-head h3 a { color: var(--text); }
 .company-head p { font-size: 14px; }
 
-.timeline { position: relative; list-style: none; margin: 0 0 0 6px; padding: 0 0 0 26px; border-left: 2px solid var(--line); display: flex; flex-direction: column; gap: 30px; }
-
-/* Scroll progress. site.js sets .tracking and --y (how far down the list the line reaches, in px,
-   pulled onto a role's dot when it's close, so it "snaps" from dot to dot). The accent line fades
-   into the gray rail at its leading edge, and each dot it reaches fills in with a small pop. */
+/* One rail down the left of every company and role. site.js sets .tracking, --y0 (the first role's
+   dot) and --y (how far the accent line reaches; it snaps onto a dot when close). The line fades into
+   the gray rail at its leading edge, and each dot it reaches fills in with a small pop. */
+.timeline { position: relative; margin-left: 6px; padding-left: 26px; border-left: 2px solid var(--line); }
+.roles { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 30px; }
 .timeline.tracking::before {
     content: ""; position: absolute; z-index: 0; pointer-events: none;
-    left: -2px; top: 13px; width: 2px; height: max(0px, calc(var(--y, 13px) - 13px));
+    left: -2px; top: var(--y0, 13px); width: 2px; height: max(0px, calc(var(--y, 13px) - var(--y0, 13px)));
     background: linear-gradient(to bottom, var(--accent) calc(100% - 56px), transparent);
     transition: height 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }

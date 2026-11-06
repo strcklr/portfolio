@@ -77,8 +77,8 @@
     });
 })();
 
-// Timeline progress: in each company's role timeline, an accent line grows down the rail as you
-//    scroll, from the current role toward the oldest. Near a role's dot it snaps onto the dot,
+// Timeline progress: an accent line grows down the resume's single timeline rail as you scroll,
+//    from the current role toward the oldest, across every company. Near a role's dot it snaps onto the dot,
 //    and each dot it reaches fills in. Skipped for visitors who prefer reduced motion.
 (function () {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -93,12 +93,16 @@
         queued = false;
         const anchor = window.innerHeight * ANCHOR;
         for (const list of timelines) {
-            const roles = [...list.children];
-            const stops = roles.map((r) => r.offsetTop + DOT); // dot centers within the list
-            const raw = anchor - list.getBoundingClientRect().top;
+            const top = list.getBoundingClientRect().top;
+            const roles = [...list.querySelectorAll(".role")];
+            if (roles.length === 0) continue;
+            // Dot centers, in px from the top of the timeline (roles sit inside company blocks).
+            const stops = roles.map((r) => r.getBoundingClientRect().top - top + DOT);
+            const raw = anchor - top;
             let y = Math.min(Math.max(raw, stops[0]), stops[stops.length - 1]);
             const nearest = stops.reduce((a, b) => (Math.abs(b - y) < Math.abs(a - y) ? b : a));
             if (Math.abs(nearest - y) < SNAP) y = nearest;
+            list.style.setProperty("--y0", `${stops[0]}px`);
             list.style.setProperty("--y", `${y}px`);
             roles.forEach((role, i) => role.classList.toggle("reached", stops[i] <= y + 0.5));
         }

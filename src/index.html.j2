@@ -110,6 +110,8 @@
                 <a class="button button-outline" href="{{ pdf }}" data-goatcounter-click="resume-pdf-resume" data-goatcounter-title="Resume PDF (Resume section)">Download PDF <span aria-hidden="true">↓</span></a>
             </div>
 
+            {# One rail for every role, newest first, so the scroll line moves through all of them in order. #}
+            <div class="timeline">
             {% for c in companies %}
             <article class="company">
                 <header class="company-head">
@@ -119,7 +121,7 @@
                     </div>
                     {% if c.span %}<p class="muted">{{ c.span }} <span class="dim">· {{ c.duration }}</span></p>{% endif %}
                 </header>
-                <ol class="timeline">
+                <ol class="roles">
                     {% for r in c.roles %}
                     <li class="role{% if r.current %} current{% endif %}">
                         <div class="role-head">
@@ -145,6 +147,7 @@
                 </ol>
             </article>
             {% endfor %}
+            </div>
 
             {% if skills %}
             <div class="subsection">
