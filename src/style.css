@@ -1,11 +1,16 @@
-/* chasestrickler.com. Dark, monospace, one accent. */
+/* chasestrickler.com. Monospace, one accent, dark by default with a light theme. */
 :root {
+    color-scheme: dark;
     --bg: #1E1E1E;
     --surface: #252525;
     --chip: #2E2E2E;
     --pill: #2A2A2A;
+    --pill-hover: #333333;
     --line: #333333;
     --line-soft: #2C2C2C;
+    --card-hover: #4A4A4A;
+    --outline: #5C5C5C;
+    --dot-past: #6E6E6E;
     --text: #FFFFFF;
     --text-2: #D6D6D6;
     --muted: #ABABAB;
@@ -13,9 +18,31 @@
     --accent: #458FFF;
     --accent-hover: #7FB0FF;
     --button: #2F6FE0; /* darker than --accent so white text passes contrast */
+    --button-hover: #2560C8;
     --input: #343434;
+    --input-text: #E0E0E0;
+    --tag-fill: 30%; /* how strongly a hovered tag fills with its color */
     --radius: 8px;
     --mono: "PT Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Light theme: the visitor's choice (data-theme, set by the toggle), or their
+   system setting when they haven't chosen. The two blocks hold the same values. */
+:root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #F6F6F3; --surface: #FFFFFF; --chip: #ECECE7; --pill: #ECECE8; --pill-hover: #E2E2DD;
+    --line: #E0E0DB; --line-soft: #E7E7E2; --card-hover: #C9C9C4; --outline: #BDBDB8; --dot-past: #A3A39E;
+    --text: #1A1A1A; --text-2: #3A3A3A; --muted: #5C5C5C; --dim: #6B6B6B;
+    --accent: #1F5FD6; --accent-hover: #174BA8; --input: #ECECE8; --input-text: #1A1A1A; --tag-fill: 35%;
+}
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+        color-scheme: light;
+        --bg: #F6F6F3; --surface: #FFFFFF; --chip: #ECECE7; --pill: #ECECE8; --pill-hover: #E2E2DD;
+        --line: #E0E0DB; --line-soft: #E7E7E2; --card-hover: #C9C9C4; --outline: #BDBDB8; --dot-past: #A3A39E;
+        --text: #1A1A1A; --text-2: #3A3A3A; --muted: #5C5C5C; --dim: #6B6B6B;
+        --accent: #1F5FD6; --accent-hover: #174BA8; --input: #ECECE8; --input-text: #1A1A1A; --tag-fill: 35%;
+    }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -63,11 +90,25 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 }
 
 /* ---------- sidebar ---------- */
+.intro { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .intro h1 { font-size: clamp(40px, 5vw, 60px); line-height: 1.05; }
-.intro .role { font-size: 22px; font-weight: 700; margin-top: 6px; }
+
+/* Theme toggle: shows the sun in dark mode (switch to light) and the moon in light mode. */
+.theme-toggle { display: none; flex: none; width: 44px; height: 44px; margin-top: 6px; align-items: center; justify-content: center; background: var(--pill); color: var(--text-2); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; }
+.js .theme-toggle { display: inline-flex; } /* the button needs JavaScript to work */
+.theme-toggle:hover { background: var(--pill-hover); color: var(--text); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .theme-toggle .icon-sun { display: none; }
+    :root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: block; }
+}
+.intro .job-title { font-size: 22px; font-weight: 700; margin-top: 6px; }
 .links { display: flex; flex-wrap: wrap; gap: 10px; }
 .pill { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; background: var(--pill); border-radius: var(--radius); color: var(--text-2); }
-.pill:hover { color: var(--text); text-decoration: none; background: #333; }
+.pill:hover { color: var(--text); text-decoration: none; background: var(--pill-hover); }
 .about { color: var(--muted); font-size: 18px; }
 
 .toc { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
@@ -87,18 +128,33 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .dim { color: var(--dim); }
 
 .button { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; background: var(--button); color: #FFFFFF; border: none; border-radius: var(--radius); font: inherit; font-size: 15px; cursor: pointer; }
-.button:hover { color: #FFFFFF; text-decoration: none; background: #2560C8; }
-.button-outline { background: transparent; border: 1px solid #5C5C5C; color: var(--text); }
+.button:hover { color: #FFFFFF; text-decoration: none; background: var(--button-hover); }
+.button-outline { background: transparent; border: 1px solid var(--outline); color: var(--text); }
 .button-outline:hover { background: var(--pill); }
 
 /* ---------- tags ---------- */
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; background: var(--chip); border-radius: 12px; font-size: 13px; color: var(--text-2); }
+.tag { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; background: var(--chip); border-radius: 12px; font-size: 13px; color: var(--text-2); }
 .tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--dot, var(--dim)); }
+
+/* Hover/focus: the dot's color floods the chip from the dot outward, left to right.
+   A tint rather than the solid color, so the label stays readable on yellows and oranges. */
+.tag::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: color-mix(in srgb, var(--dot, var(--dim)) var(--tag-fill), var(--chip));
+    clip-path: circle(0 at 14px 50%);
+    transition: clip-path 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+a.tag { color: var(--text-2); }
+a.tag:hover, a.tag:focus-visible { color: var(--text); text-decoration: none; }
+a.tag:hover::after, a.tag:focus-visible::after,
+.spotlight:hover .tag::after, .spotlight:focus-visible .tag::after { clip-path: circle(150% at 14px 50%); }
+.tag .ext { display: inline-block; max-width: 0; opacity: 0; overflow: hidden; margin-left: -6px; transition: max-width 200ms ease-out, opacity 200ms ease-out, margin 200ms ease-out; }
+a.tag:hover .ext, a.tag:focus-visible .ext { max-width: 1em; opacity: 0.8; margin-left: 0; }
 
 /* ---------- spotlight ---------- */
 .spotlight { display: flex; align-items: center; gap: 16px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); }
-.spotlight:hover { text-decoration: none; color: var(--text); border-color: #4A4A4A; }
+.spotlight:hover { text-decoration: none; color: var(--text); border-color: var(--card-hover); }
 .spotlight-icon { flex: 0 0 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); color: var(--accent); }
 .spotlight-icon svg { width: 22px; height: 22px; }
 .spotlight-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
@@ -118,11 +174,21 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .company-head h3 a { color: var(--text); }
 .company-head p { font-size: 14px; }
 
-.timeline { list-style: none; margin: 0 0 0 6px; padding: 0 0 0 26px; border-left: 2px solid var(--line); display: flex; flex-direction: column; gap: 30px; }
+.timeline { position: relative; list-style: none; margin: 0 0 0 6px; padding: 0 0 0 26px; border-left: 2px solid var(--line); display: flex; flex-direction: column; gap: 30px; }
+
+/* Scroll progress (site.js sets .tracking and --y, the marker's distance from the top of the
+   list in px): the line fills in with the accent down to a dot that follows your scroll. */
+.timeline.tracking::before, .timeline.tracking::after { content: ""; position: absolute; z-index: 1; pointer-events: none; }
+.timeline.tracking::before { left: -2px; top: 13px; width: 2px; height: max(0px, calc(var(--y, 13px) - 13px)); background: var(--accent); }
+.timeline.tracking::after {
+    left: -8px; top: calc(var(--y, 13px) - 7px); width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.timeline.tracking .role.reached::before { border-color: var(--accent); }
 .role { position: relative; display: flex; flex-direction: column; gap: 10px; }
 .role::before { /* timeline dot: hollow for past roles */
     content: ""; position: absolute; left: -34px; top: 6px; width: 10px; height: 10px; border-radius: 50%;
-    background: var(--bg); border: 2px solid #6E6E6E; box-shadow: 0 0 0 4px var(--bg);
+    background: var(--bg); border: 2px solid var(--dot-past); box-shadow: 0 0 0 4px var(--bg);
 }
 .role.current::before { width: 14px; height: 14px; border: none; background: var(--accent); }
 .role-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; }
@@ -144,7 +210,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .contact { display: flex; flex-direction: column; gap: 8px; }
 .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
 .contact label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
-.contact input, .contact textarea { font: inherit; font-size: 15px; background: var(--input); color: #E0E0E0; border: none; border-radius: var(--radius); padding: 12px 16px; min-height: 44px; }
+.contact input, .contact textarea { font: inherit; font-size: 15px; background: var(--input); color: var(--input-text); border: none; border-radius: var(--radius); padding: 12px 16px; min-height: 44px; }
 .contact textarea { min-height: 140px; resize: vertical; }
 .contact ::placeholder { color: var(--dim); }
 .contact .button { font-size: 17px; padding: 0 28px; min-height: 48px; }
@@ -153,3 +219,8 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .form-status { color: var(--text-2); }
 
 .footer { padding: 24px 0 8px; border-top: 1px solid var(--line); color: var(--dim); font-size: 14px; text-align: center; }
+
+/* Respect "reduce motion": no animated fills or scroll tracking. */
+@media (prefers-reduced-motion: reduce) {
+    .tag::after, .tag .ext { transition: none; }
+}
