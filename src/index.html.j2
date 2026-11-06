@@ -136,7 +136,7 @@
                         {% if r.tags %}
                         <p class="tags">{% for t in r.tags %}
                             {%- if t.url -%}
-                            <a class="tag" href="{{ t.url }}" target="_blank" rel="noopener" data-goatcounter-click="docs-{{ t.label|lower|replace(' ', '-') }}" data-goatcounter-title="Docs: {{ t.label }}" style="--dot: {{ t.color }}" aria-label="{{ t.label }} documentation (opens in a new tab)">{{ t.label }}<span class="ext" aria-hidden="true">↗</span></a>
+                            <a class="tag" href="{{ t.url }}" target="_blank" rel="noopener" data-goatcounter-click="tag-{{ t.label|lower|replace(' ', '-') }}" data-goatcounter-title="Tag: {{ t.label }}" style="--dot: {{ t.color }}" aria-label="{{ t.label }} website (opens in a new tab)">{{ t.label }}<span class="ext" aria-hidden="true">↗</span></a>
                             {%- else -%}
                             <span class="tag" style="--dot: {{ t.color }}">{{ t.label }}</span>
                             {%- endif -%}

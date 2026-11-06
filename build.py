@@ -35,30 +35,30 @@ TAG_COLORS = {
 }
 DEFAULT_TAG_COLOR = "#8C8C8C"
 
-# Where each tag links. A tag without an entry is shown as plain text.
-TAG_DOCS = {
-    "Kotlin": "https://kotlinlang.org/docs/home.html",
-    "Groovy": "https://groovy-lang.org/documentation.html",
-    "Java": "https://docs.oracle.com/en/java/",
-    "Python": "https://docs.python.org/3/",
-    "Go": "https://go.dev/doc/",
-    "C": "https://en.cppreference.com/w/c",
-    "C++": "https://en.cppreference.com/w/cpp",
-    "Dart": "https://dart.dev/guides",
-    "Ratpack": "https://ratpack.io/manual/current/",
-    "Spring Boot": "https://docs.spring.io/spring-boot/",
-    "WebFlux": "https://docs.spring.io/spring-framework/reference/web/webflux.html",
-    "Flutter": "https://docs.flutter.dev/",
-    "AOSP": "https://source.android.com/docs",
-    "AWS": "https://docs.aws.amazon.com/",
-    "DynamoDB": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/",
-    "CloudFront": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/",
-    "Terraform": "https://developer.hashicorp.com/terraform/docs",
-    "Spinnaker": "https://spinnaker.io/docs/",
-    "Jenkins": "https://www.jenkins.io/doc/",
-    "Docker": "https://docs.docker.com/",
-    "DataDog": "https://docs.datadoghq.com/",
-    "SumoLogic": "https://help.sumologic.com/",
+# Where each tag links: the project's home page. A tag without an entry is shown as plain text.
+TAG_LINKS = {
+    "Kotlin": "https://kotlinlang.org/",
+    "Groovy": "https://groovy-lang.org/",
+    "Java": "https://dev.java/",
+    "Python": "https://www.python.org/",
+    "Go": "https://go.dev/",
+    "C": "https://www.open-std.org/jtc1/sc22/wg14/",  # C has no project site; this is its standards committee
+    "C++": "https://isocpp.org/",
+    "Dart": "https://dart.dev/",
+    "Ratpack": "https://ratpack.io/",
+    "Spring Boot": "https://spring.io/projects/spring-boot",
+    "WebFlux": "https://spring.io/projects/spring-framework",  # part of Spring Framework, no site of its own
+    "Flutter": "https://flutter.dev/",
+    "AOSP": "https://source.android.com/",
+    "AWS": "https://aws.amazon.com/",
+    "DynamoDB": "https://aws.amazon.com/dynamodb/",
+    "CloudFront": "https://aws.amazon.com/cloudfront/",
+    "Terraform": "https://www.terraform.io/",
+    "Spinnaker": "https://spinnaker.io/",
+    "Jenkins": "https://www.jenkins.io/",
+    "Docker": "https://www.docker.com/",
+    "DataDog": "https://www.datadoghq.com/",
+    "SumoLogic": "https://www.sumologic.com/",
 }
 
 
@@ -91,7 +91,7 @@ def team(position: str) -> str:
 
 
 def tags(keywords) -> list[dict]:
-    return [{"label": k, "color": TAG_COLORS.get(k, DEFAULT_TAG_COLOR), "url": TAG_DOCS.get(k)}
+    return [{"label": k, "color": TAG_COLORS.get(k, DEFAULT_TAG_COLOR), "url": TAG_LINKS.get(k)}
             for k in keywords or []]
 
 
