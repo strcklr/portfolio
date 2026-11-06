@@ -17,7 +17,7 @@ build.py            renders the template and the PDF into _site/
 The resume, the project spotlight and the PDF all come from `resumes/tailored/public.yml` in my
 private `strcklr/resumes` repo, built with [resumake](https://github.com/strcklr/resumake). To change
 what the site says, edit that file (or `default.yml`, which it extends), not this repo. The page
-layout, the about text, and the tag colors and docs links (`TAG_COLORS` and `TAG_DOCS` in
+layout, the about text, and the tag colors and links (`TAG_COLORS` and `TAG_LINKS` in
 `build.py`) live here.
 
 The build refuses a resume that contains a location, email or phone, so a private variant can't be
@@ -26,7 +26,7 @@ published by mistake.
 ## Analytics
 
 [GoatCounter](https://chasestrickler.goatcounter.com) (cookieless, so no consent banner) counts page views
-and these click events: `resume-pdf-sidebar`, `resume-pdf-resume`, `docs-<tag>` and
+and these click events: `resume-pdf-sidebar`, `resume-pdf-resume`, `tag-<tag>` and
 `contact-form-sent`. The footer shows the past year's visit count once it passes 1,000; that needs
 "Allow adding visitor counts on your website" turned on in GoatCounter's site settings.
 

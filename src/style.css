@@ -225,11 +225,12 @@ a.tag:hover .ext, a.tag:focus-visible .ext { max-width: 1em; opacity: 0.8; margi
 }
 .role { position: relative; display: flex; flex-direction: column; gap: 10px; }
 .role::before { /* timeline dot: hollow for past roles */
-    content: ""; position: absolute; z-index: 1; left: -34px; top: 6px; width: 10px; height: 10px; border-radius: 50%;
+    content: ""; position: absolute; z-index: 1; left: -32px; top: 6px; width: 10px; height: 10px; border-radius: 50%;
     background: var(--bg); border: 2px solid var(--dot-past); box-shadow: 0 0 0 4px var(--bg);
     transition: background-color 200ms ease-out, border-color 200ms ease-out;
 }
-.role.current::before { width: 14px; height: 14px; border: none; background: var(--accent); }
+.role.current::before { left: -34px; width: 14px; height: 14px; border: none; background: var(--accent); }
+/* Both dots center on the rail (2px wide, its middle 27px left of the role): left = -27 - width / 2. */
 .role-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; }
 .role-head h4 { font-size: 18px; }
 .dates { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; background: var(--pill); border-radius: 12px; font-size: 13px; color: var(--text-2); }
