@@ -1,4 +1,5 @@
-/* chasestrickler.com. Monospace, one accent, dark by default with a light theme. */
+/* chasestrickler.com. Dark by default: monospace with one blue accent. The light theme reads like a
+   journal (see below). */
 :root {
     color-scheme: dark;
     --bg: #1E1E1E;
@@ -24,24 +25,36 @@
     --tag-fill: 30%; /* how strongly a hovered tag fills with its color */
     --radius: 8px;
     --mono: "PT Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif: "Newsreader", Charter, "Iowan Old Style", Georgia, serif;
+    --font: var(--mono);
+    --font-size: 16px;
+    --hash: inline;        /* the "#" before section headings */
+    --num-code: inline;    /* sidebar numbers as "01" ... */
+    --num-journal: none;   /* ... or as "1." */
 }
 
-/* Light theme: the visitor's choice (data-theme, set by the toggle), or their
-   system setting when they haven't chosen. The two blocks hold the same values. */
+/* Light theme, styled like a printed journal: warm paper, a serif, ink-black highlights and red
+   buttons, no "#" before headings, and the sidebar numbered "1." instead of "01". It applies when
+   the visitor picks it (data-theme, set by the toggle) or, with no choice saved, when their system
+   is set to light. The two blocks hold the same values. */
 :root[data-theme="light"] {
     color-scheme: light;
-    --bg: #F6F6F3; --surface: #FFFFFF; --chip: #ECECE7; --pill: #ECECE8; --pill-hover: #E2E2DD;
-    --line: #E0E0DB; --line-soft: #E7E7E2; --card-hover: #C9C9C4; --outline: #BDBDB8; --dot-past: #A3A39E;
-    --text: #1A1A1A; --text-2: #3A3A3A; --muted: #5C5C5C; --dim: #6B6B6B;
-    --accent: #1F5FD6; --accent-hover: #174BA8; --input: #ECECE8; --input-text: #1A1A1A; --tag-fill: 35%;
+    --bg: #FBF9F4; --surface: #FFFEFA; --chip: #F0ECE3; --pill: #F0ECE3; --pill-hover: #E6E1D6;
+    --line: #E3DED3; --line-soft: #ECE8DF; --card-hover: #CFC8BA; --outline: #BDB6A8; --dot-past: #A6A094;
+    --text: #1A1A1A; --text-2: #34322E; --muted: #57534C; --dim: #6B675F;
+    --accent: #1A1A1A; --accent-hover: #A8251C; --button: #A8251C; --button-hover: #8A1E17;
+    --input: #F0ECE3; --input-text: #1A1A1A; --tag-fill: 35%;
+    --font: var(--serif); --font-size: 18px; --hash: none; --num-code: none; --num-journal: inline;
 }
 @media (prefers-color-scheme: light) {
     :root:not([data-theme="dark"]) {
         color-scheme: light;
-        --bg: #F6F6F3; --surface: #FFFFFF; --chip: #ECECE7; --pill: #ECECE8; --pill-hover: #E2E2DD;
-        --line: #E0E0DB; --line-soft: #E7E7E2; --card-hover: #C9C9C4; --outline: #BDBDB8; --dot-past: #A3A39E;
-        --text: #1A1A1A; --text-2: #3A3A3A; --muted: #5C5C5C; --dim: #6B6B6B;
-        --accent: #1F5FD6; --accent-hover: #174BA8; --input: #ECECE8; --input-text: #1A1A1A; --tag-fill: 35%;
+        --bg: #FBF9F4; --surface: #FFFEFA; --chip: #F0ECE3; --pill: #F0ECE3; --pill-hover: #E6E1D6;
+        --line: #E3DED3; --line-soft: #ECE8DF; --card-hover: #CFC8BA; --outline: #BDB6A8; --dot-past: #A6A094;
+        --text: #1A1A1A; --text-2: #34322E; --muted: #57534C; --dim: #6B675F;
+        --accent: #1A1A1A; --accent-hover: #A8251C; --button: #A8251C; --button-hover: #8A1E17;
+        --input: #F0ECE3; --input-text: #1A1A1A; --tag-fill: 35%;
+        --font: var(--serif); --font-size: 18px; --hash: none; --num-code: none; --num-journal: inline;
     }
 }
 
@@ -53,8 +66,8 @@ body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: var(--mono);
-    font-size: 16px;
+    font-family: var(--font);
+    font-size: var(--font-size);
     line-height: 1.6;
 }
 h1, h2, h3, h4, p, ul, ol, dl, dd { margin: 0; }
@@ -134,7 +147,9 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 /* ---------- sections ---------- */
 .section { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: 24px; }
 .section h2 { font-size: 26px; }
-.hash { color: var(--accent); }
+.hash { display: var(--hash); color: var(--accent); }
+.num-code { display: var(--num-code); }
+.num-journal { display: var(--num-journal); }
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 .muted { color: var(--muted); }
 .dim { color: var(--dim); }
