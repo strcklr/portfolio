@@ -101,9 +101,24 @@ def companies(work: list[dict], today: dt.date) -> list[dict]:
     return out
 
 
+def skills(items: list[dict]) -> list[dict]:
+    """Each skill group as lines of keywords: a flat list is one line, a list of lists one line each.
+
+    The template keeps each keyword from wrapping ("Spring Boot", "C++", "multi-version"), so lines
+    only break between keywords.
+    """
+    out = []
+    for s in items:
+        keywords = s.get("keywords", [])
+        if any(isinstance(k, list) for k in keywords):
+            lines = [k if isinstance(k, list) else [k] for k in keywords]
+        else:
+            lines = [keywords]
+        out.append({"name": s["name"], "lines": lines, "note": s.get("note")})
+    return out
+
+
 def view_model(data: dict, today: dt.date) -> dict:
-    ctx = build_context(data)  # reuse resumake's formatting for skills and education
-    sections = {s["key"]: s for s in ctx["sections"]}
     projects = [{
         "name": p["name"],
         "url": p.get("url"),
@@ -118,7 +133,7 @@ def view_model(data: dict, today: dt.date) -> dict:
         "linkedin": profiles.get("linkedin"),
         "spotlight": projects[0] if projects else None,
         "companies": companies(data.get("work", []), today),
-        "skills": [{"name": s["name"], "text": s["text"]} for s in sections.get("skills", {}).get("entries", [])],
+        "skills": skills(data.get("skills", [])),
         "education": data.get("education", []),
         "pdf": PDF_NAME,
         "year": today.year,

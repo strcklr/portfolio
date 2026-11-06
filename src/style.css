@@ -135,6 +135,9 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .label { font-size: 14px; font-weight: 400; color: var(--dim); letter-spacing: 0.08em; text-transform: uppercase; }
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px 32px; }
 .skills dd { color: var(--muted); }
+.skills .kw { white-space: nowrap; } /* break between skills, never inside one ("Spring Boot", "C++") */
+.skills .kw-long { white-space: normal; } /* except long phrases, which may wrap at their spaces */
+.skills dd + dd { margin-top: 6px; } /* separate keyword groups from wrapped lines */
 .education { display: flex; flex-wrap: wrap; gap: 6px 24px; }
 
 /* ---------- contact ---------- */
