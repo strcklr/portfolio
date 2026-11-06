@@ -23,6 +23,13 @@ layout, the about text, and the tag colors and docs links (`TAG_COLORS` and `TAG
 The build refuses a resume that contains a location, email or phone, so a private variant can't be
 published by mistake.
 
+## Analytics
+
+[GoatCounter](https://chasestrickler.goatcounter.com) (cookieless, so no consent banner) counts page views
+and these click events: `resume-pdf-sidebar`, `resume-pdf-resume`, `docs-<tag>` and
+`contact-form-sent`. The footer shows the past year's visit count once it passes 1,000; that needs
+"Allow adding visitor counts on your website" turned on in GoatCounter's site settings.
+
 ## Building locally
 
 ```bash
