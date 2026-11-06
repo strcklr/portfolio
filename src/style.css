@@ -188,19 +188,29 @@ a.tag:hover .ext, a.tag:focus-visible .ext { max-width: 1em; opacity: 0.8; margi
 
 .timeline { position: relative; list-style: none; margin: 0 0 0 6px; padding: 0 0 0 26px; border-left: 2px solid var(--line); display: flex; flex-direction: column; gap: 30px; }
 
-/* Scroll progress (site.js sets .tracking and --y, the marker's distance from the top of the
-   list in px): the line fills in with the accent down to a dot that follows your scroll. */
-.timeline.tracking::before, .timeline.tracking::after { content: ""; position: absolute; z-index: 1; pointer-events: none; }
-.timeline.tracking::before { left: -2px; top: 13px; width: 2px; height: max(0px, calc(var(--y, 13px) - 13px)); background: var(--accent); }
-.timeline.tracking::after {
-    left: -8px; top: calc(var(--y, 13px) - 7px); width: 14px; height: 14px; border-radius: 50%;
-    background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
+/* Scroll progress. site.js sets .tracking and --y (how far down the list the line reaches, in px,
+   pulled onto a role's dot when it's close, so it "snaps" from dot to dot). The accent line fades
+   into the gray rail at its leading edge, and each dot it reaches fills in with a small pop. */
+.timeline.tracking::before {
+    content: ""; position: absolute; z-index: 0; pointer-events: none;
+    left: -2px; top: 13px; width: 2px; height: max(0px, calc(var(--y, 13px) - 13px));
+    background: linear-gradient(to bottom, var(--accent) calc(100% - 56px), transparent);
+    transition: height 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.timeline.tracking .role.reached::before { border-color: var(--accent); }
+.timeline.tracking .role.reached:not(.current)::before {
+    background: var(--accent); border-color: var(--accent);
+    animation: dot-fill 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes dot-fill {
+    0% { transform: scale(0.6); }
+    60% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
 .role { position: relative; display: flex; flex-direction: column; gap: 10px; }
 .role::before { /* timeline dot: hollow for past roles */
-    content: ""; position: absolute; left: -34px; top: 6px; width: 10px; height: 10px; border-radius: 50%;
+    content: ""; position: absolute; z-index: 1; left: -34px; top: 6px; width: 10px; height: 10px; border-radius: 50%;
     background: var(--bg); border: 2px solid var(--dot-past); box-shadow: 0 0 0 4px var(--bg);
+    transition: background-color 200ms ease-out, border-color 200ms ease-out;
 }
 .role.current::before { width: 14px; height: 14px; border: none; background: var(--accent); }
 .role-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; }

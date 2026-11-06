@@ -77,27 +77,28 @@
     });
 })();
 
-// Timeline progress: in each company's role timeline, a dot follows your scroll from the
-//    current role down to the oldest one, filling the line behind it and lighting up each
-//    role it passes. Skipped entirely for visitors who prefer reduced motion.
+// Timeline progress: in each company's role timeline, an accent line grows down the rail as you
+//    scroll, from the current role toward the oldest. Near a role's dot it snaps onto the dot,
+//    and each dot it reaches fills in. Skipped for visitors who prefer reduced motion.
 (function () {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timelines = [...document.querySelectorAll(".timeline")];
     if (timelines.length === 0) return;
-    const ANCHOR = 0.45; // the marker tracks a line 45% of the way down the window
+    const ANCHOR = 0.45; // the line's end tracks a point 45% of the way down the window
     const DOT = 13;      // a role's dot center, in px below the top of the role
+    const SNAP = 48;     // within this many px of a dot, the line jumps onto it
 
     let queued = false;
     const update = () => {
         queued = false;
         const anchor = window.innerHeight * ANCHOR;
         for (const list of timelines) {
-            const top = list.getBoundingClientRect().top;
             const roles = [...list.children];
             const stops = roles.map((r) => r.offsetTop + DOT); // dot centers within the list
-            const first = stops[0];
-            const last = stops[stops.length - 1];
-            const y = Math.min(Math.max(anchor - top, first), last);
+            const raw = anchor - list.getBoundingClientRect().top;
+            let y = Math.min(Math.max(raw, stops[0]), stops[stops.length - 1]);
+            const nearest = stops.reduce((a, b) => (Math.abs(b - y) < Math.abs(a - y) ? b : a));
+            if (Math.abs(nearest - y) < SNAP) y = nearest;
             list.style.setProperty("--y", `${y}px`);
             roles.forEach((role, i) => role.classList.toggle("reached", stops[i] <= y + 0.5));
         }
