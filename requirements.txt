@@ -1,0 +1,2 @@
+# The site is built with the same tool that builds the resumes.
+resumake @ git+https://github.com/strcklr/resumake@main
