@@ -1,0 +1,163 @@
+<!doctype html>
+{# Rendered by build.py from the public resume YAML. Edit content in the resumes repo, layout here. #}
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ basics.name }}, Staff Software Engineer</title>
+    <meta name="description" content="{{ basics.name }} is a staff software engineer who designs and runs high-throughput API platforms on AWS.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ basics.name }}, Staff Software Engineer">
+    <meta property="og:description" content="Staff software engineer building high-throughput API platforms on AWS.">
+    <meta property="og:url" content="https://chasestrickler.com/">
+    <meta name="theme-color" content="#1E1E1E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="layout">
+
+    <aside class="sidebar">
+        <header class="intro">
+            <h1>{{ basics.name }}</h1>
+            <p class="role">Staff Software Engineer</p>
+        </header>
+
+        <div class="links">
+            {% if github %}
+            <a class="pill" href="{{ github }}">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                GitHub</a>
+            {% endif %}
+            {% if linkedin %}
+            <a class="pill" href="{{ linkedin }}">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                LinkedIn</a>
+            {% endif %}
+            <a class="pill" href="{{ pdf }}">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>
+                Resume PDF</a>
+        </div>
+
+        <p class="about">I’m a staff software engineer with a passion for architecture. I design and run high-throughput API platforms that balance scalability, performance, and maintainability, and I’m exploring how AI changes the way we build them.</p>
+
+        <nav class="toc" aria-label="On this page">
+            <a href="#spotlight"><span><span class="num">01</span> Spotlight</span><span aria-hidden="true">↓</span></a>
+            <a href="#resume"><span><span class="num">02</span> Resume</span><span aria-hidden="true">↓</span></a>
+            <a href="#contact"><span><span class="num">03</span> Contact</span><span aria-hidden="true">↓</span></a>
+        </nav>
+    </aside>
+
+    <main id="main" class="content">
+
+        {% if spotlight %}
+        <section id="spotlight" class="section">
+            <h2><span class="hash">#</span> Project Spotlight</h2>
+            <a class="spotlight" href="{{ spotlight.url or github }}">
+                <span class="spotlight-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
+                </span>
+                <span class="spotlight-body">
+                    <span class="spotlight-title">
+                        <strong>{{ spotlight.name }}</strong>
+                        {% if spotlight.in_progress %}<span class="status">in progress</span>{% endif %}
+                    </span>
+                    {% if spotlight.summary %}<span class="spotlight-summary">{{ spotlight.summary }}</span>{% endif %}
+                    <span class="tags">
+                        {% for t in spotlight.tags %}<span class="tag" style="--dot: {{ t.color }}">{{ t.label }}</span>{% endfor %}
+                    </span>
+                </span>
+                <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            {% if github %}
+            <a class="button" href="{{ github }}?tab=repositories">See all projects <span aria-hidden="true">→</span></a>
+            {% endif %}
+        </section>
+        {% endif %}
+
+        <section id="resume" class="section">
+            <div class="section-head">
+                <h2><span class="hash">#</span> Resume</h2>
+                <a class="button button-outline" href="{{ pdf }}">Download PDF <span aria-hidden="true">↓</span></a>
+            </div>
+
+            {% for c in companies %}
+            <article class="company">
+                <header class="company-head">
+                    <div>
+                        <h3>{% if c.url %}<a href="{{ c.url }}">{{ c.company }}</a>{% else %}{{ c.company }}{% endif %}</h3>
+                        {% if c.meta %}<p class="muted">{{ c.meta }}</p>{% endif %}
+                    </div>
+                    {% if c.span %}<p class="muted">{{ c.span }} <span class="dim">· {{ c.duration }}</span></p>{% endif %}
+                </header>
+                <ol class="timeline">
+                    {% for r in c.roles %}
+                    <li class="role{% if r.current %} current{% endif %}">
+                        <div class="role-head">
+                            <h4>{{ r.title }}</h4>
+                            <span class="dates">{{ r.start }} → <span class="{{ 'now' if r.current }}">{{ r.end }}</span>{% if r.duration %} <span class="dim">· {{ r.duration }}</span>{% endif %}</span>
+                        </div>
+                        {% if r.highlights %}
+                        <ul class="bullets">
+                            {% for h in r.highlights %}<li>{{ h }}</li>{% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if r.tags %}
+                        <p class="tags">{% for t in r.tags %}<span class="tag" style="--dot: {{ t.color }}">{{ t.label }}</span>{% endfor %}</p>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ol>
+            </article>
+            {% endfor %}
+
+            {% if skills %}
+            <div class="subsection">
+                <h3 class="label">Technical skills</h3>
+                <dl class="skills">
+                    {% for s in skills %}
+                    <div><dt>{{ s.name }}</dt><dd>{{ s.text }}</dd></div>
+                    {% endfor %}
+                </dl>
+            </div>
+            {% endif %}
+
+            {% if education %}
+            <div class="subsection">
+                <h3 class="label">Education</h3>
+                {% for e in education %}
+                <p class="education"><span class="muted">{{ e.end }}</span> <span><strong>{{ e.institution }}</strong> <span class="muted">– {{ e.degree }}</span></span></p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </section>
+
+        <section id="contact" class="section">
+            <h2><span class="hash">#</span> Contact</h2>
+            <p class="muted">I’m open to consulting engagements and new opportunities. Have a project, a role, or just want to talk? Get in touch.</p>
+            <form class="contact" action="https://formsubmit.co/9d54063c0d58bfd9a29cd71597199f1a" method="POST">
+                <input type="hidden" name="_subject" value="New message from chasestrickler.com">
+                <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <div class="fields">
+                    <label>Name <input type="text" name="name" placeholder="Jane Doe" autocomplete="name" required></label>
+                    <label>Email <input type="email" name="email" placeholder="jane@company.com" autocomplete="email" required></label>
+                </div>
+                <label>Message <textarea name="message" placeholder="Message..." required></textarea></label>
+                <button type="submit" class="button">Send message</button>
+                <p class="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <footer class="footer">© {{ year }} {{ basics.name }}</footer>
+    </main>
+</div>
+</body>
+</html>
