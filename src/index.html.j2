@@ -71,7 +71,7 @@
         <p class="about">I’m a staff software engineer with a passion for architecture. I design and run high-throughput API platforms that balance scalability, performance, and maintainability, and I’m exploring how AI changes the way we build them.</p>
 
         <nav class="toc" aria-label="On this page">
-            <a href="#spotlight"><span><span class="num"><span class="num-code">01</span><span class="num-journal">1.</span></span> Spotlight</span><span aria-hidden="true">↓</span></a>
+            <a href="#projects"><span><span class="num"><span class="num-code">01</span><span class="num-journal">1.</span></span> Projects</span><span aria-hidden="true">↓</span></a>
             <a href="#resume"><span><span class="num"><span class="num-code">02</span><span class="num-journal">2.</span></span> Resume</span><span aria-hidden="true">↓</span></a>
             <a href="#contact"><span><span class="num"><span class="num-code">03</span><span class="num-journal">3.</span></span> Contact</span><span aria-hidden="true">↓</span></a>
         </nav>
@@ -79,25 +79,31 @@
 
     <main id="main" class="content">
 
-        {% if spotlight %}
-        <section id="spotlight" class="section">
-            <h2><span class="hash">#</span> Project Spotlight</h2>
-            <a class="spotlight" href="{{ spotlight.url or github }}">
-                <span class="spotlight-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
-                </span>
-                <span class="spotlight-body">
-                    <span class="spotlight-title">
-                        <strong>{{ spotlight.name }}</strong>
-                        {% if spotlight.in_progress %}<span class="status">in progress</span>{% endif %}
-                    </span>
-                    {% if spotlight.summary %}<span class="spotlight-summary">{{ spotlight.summary }}</span>{% endif %}
-                    <span class="tags">
-                        {% for t in spotlight.tags %}<span class="tag" style="--dot: {{ t.color }}">{{ t.label }}</span>{% endfor %}
-                    </span>
-                </span>
-                <span class="arrow" aria-hidden="true">→</span>
-            </a>
+        {% if projects %}
+        <section id="projects" class="section">
+            <h2><span class="hash">#</span> Projects</h2>
+            <ul class="project-list">
+                {% for p in projects %}
+                <li>
+                    <a class="project" href="{{ p.url or github }}">
+                        <span class="project-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
+                        </span>
+                        <span class="project-body">
+                            <span class="project-title">
+                                <strong>{{ p.name }}</strong>
+                                {% if p.in_progress %}<span class="status">in progress</span>{% endif %}
+                            </span>
+                            {% if p.summary %}<span class="project-summary">{{ p.summary }}</span>{% endif %}
+                            <span class="tags">
+                                {% for t in p.tags %}<span class="tag" style="--dot: {{ t.color }}">{{ t.label }}</span>{% endfor %}
+                            </span>
+                        </span>
+                        <span class="arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
             {% if github %}
             <a class="button" href="{{ github }}?tab=repositories">See all projects <span aria-hidden="true">→</span></a>
             {% endif %}

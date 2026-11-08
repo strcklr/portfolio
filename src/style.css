@@ -175,22 +175,23 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 a.tag { color: var(--text-2); }
 a.tag:hover, a.tag:focus-visible { color: var(--text); text-decoration: none; }
 a.tag:hover::after, a.tag:focus-visible::after,
-.spotlight:hover .tag::after, .spotlight:focus-visible .tag::after { clip-path: circle(150% at 14px 50%); }
+.project:hover .tag::after, .project:focus-visible .tag::after { clip-path: circle(150% at 14px 50%); }
 .tag .ext { display: inline-block; max-width: 0; opacity: 0; overflow: hidden; margin-left: -6px; transition: max-width 200ms ease-out, opacity 200ms ease-out, margin 200ms ease-out; }
 a.tag:hover .ext, a.tag:focus-visible .ext { max-width: 1em; opacity: 0.8; margin-left: 0; }
 
-/* ---------- spotlight ---------- */
-.spotlight { display: flex; align-items: center; gap: 16px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); }
-.spotlight:hover { text-decoration: none; color: var(--text); border-color: var(--card-hover); }
-.spotlight-icon { flex: 0 0 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); color: var(--accent); }
-.spotlight-icon svg { width: 22px; height: 22px; }
-.spotlight-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.spotlight-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 17px; }
+/* ---------- projects ---------- */
+.project-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.project { display: flex; align-items: center; gap: 16px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); }
+.project:hover { text-decoration: none; color: var(--text); border-color: var(--card-hover); }
+.project-icon { flex: 0 0 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); color: var(--accent); }
+.project-icon svg { width: 22px; height: 22px; }
+.project-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.project-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 17px; }
 .status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--accent); }
 .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.spotlight-summary { color: var(--muted); font-size: 14px; line-height: 1.5; }
-.spotlight .tags { padding-top: 6px; }
-.spotlight .tag { font-size: 12px; padding: 2px 9px; }
+.project-summary { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.project .tags { padding-top: 6px; }
+.project .tag { font-size: 12px; padding: 2px 9px; }
 .arrow { color: var(--muted); font-size: 18px; }
 
 /* ---------- resume: companies and role timeline ---------- */
