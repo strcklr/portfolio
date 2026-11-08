@@ -32,6 +32,7 @@ TAG_COLORS = {
     "CloudFront": "#B07CF7", "DataDog": "#8E5BD8", "SumoLogic": "#1F6FEB", "Go": "#00ADD8",
     "Dart": "#2B8CC4", "Flutter": "#27B0EE", "AOSP": "#34A853", "C": "#1E90FF", "C++": "#6544D2",
     "Docker": "#2496ED", "Svelte": "#FF3E00", "TypeScript": "#3178C6", "Pyodide": "#9C6ADE",
+    "Claude": "#D97757",
 }
 DEFAULT_TAG_COLOR = "#8C8C8C"
 
@@ -62,6 +63,7 @@ TAG_LINKS = {
     "Svelte": "https://svelte.dev/",
     "TypeScript": "https://www.typescriptlang.org/",
     "Pyodide": "https://pyodide.org/",
+    "Claude": "https://claude.ai/",
 }
 
 
