@@ -31,7 +31,8 @@ TAG_COLORS = {
     "Spinnaker": "#6495ED", "Jenkins": "#D33833", "AWS": "#FF9900", "DynamoDB": "#5A6FE0",
     "CloudFront": "#B07CF7", "DataDog": "#8E5BD8", "SumoLogic": "#1F6FEB", "Go": "#00ADD8",
     "Dart": "#2B8CC4", "Flutter": "#27B0EE", "AOSP": "#34A853", "C": "#1E90FF", "C++": "#6544D2",
-    "Docker": "#2496ED",
+    "Docker": "#2496ED", "Svelte": "#FF3E00", "TypeScript": "#3178C6", "Pyodide": "#9C6ADE",
+    "Claude": "#D97757",
 }
 DEFAULT_TAG_COLOR = "#8C8C8C"
 
@@ -59,6 +60,10 @@ TAG_LINKS = {
     "Docker": "https://www.docker.com/",
     "DataDog": "https://www.datadoghq.com/",
     "SumoLogic": "https://www.sumologic.com/",
+    "Svelte": "https://svelte.dev/",
+    "TypeScript": "https://www.typescriptlang.org/",
+    "Pyodide": "https://pyodide.org/",
+    "Claude": "https://claude.ai/",
 }
 
 
@@ -158,7 +163,7 @@ def view_model(data: dict, today: dt.date) -> dict:
         "basics": data["basics"],
         "github": profiles.get("github"),
         "linkedin": profiles.get("linkedin"),
-        "spotlight": projects[0] if projects else None,
+        "projects": projects,
         "companies": companies(data.get("work", []), today),
         "skills": skills(data.get("skills", [])),
         "education": data.get("education", []),

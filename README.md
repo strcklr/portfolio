@@ -14,7 +14,7 @@ build.py            renders the template and the PDF into _site/
 
 ## Where the content comes from
 
-The resume, the project spotlight and the PDF all come from `resumes/tailored/public.yml` in my
+The resume, the projects list and the PDF all come from `resumes/tailored/public.yml` in my
 private `strcklr/resumes` repo, built with [resumake](https://github.com/strcklr/resumake). To change
 what the site says, edit that file (or `default.yml`, which it extends), not this repo. The page
 layout, the about text, and the tag colors and links (`TAG_COLORS` and `TAG_LINKS` in
