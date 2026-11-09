@@ -30,8 +30,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="images/site.webmanifest">
     <script src="site.js" defer></script>
-    {# GoatCounter: cookieless page views and click events. Skips localhost, so local builds aren't counted. #}
-    <script data-goatcounter="https://chasestrickler.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    {# Umami (self-hosted): cookieless page views and click events, only when the build sets UMAMI_SRC
+       and UMAMI_WEBSITE_ID. data-domains keeps local and preview builds from being counted. #}
+    {% if umami %}
+    <script defer src="{{ umami.src }}" data-website-id="{{ umami.website_id }}" data-domains="chasestrickler.com,www.chasestrickler.com" data-do-not-track="true"></script>
+    {% endif %}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -63,7 +66,7 @@
                 {% endif %}<span class="pill-label">LinkedIn</span></a>
             {% endif %}
             {# Hidden on phones to save space; the Resume section has its own Download PDF button. #}
-            <a class="pill pill-pdf" href="{{ pdf }}" data-goatcounter-click="resume-pdf-sidebar" data-goatcounter-title="Resume PDF (sidebar)">
+            <a class="pill pill-pdf" href="{{ pdf }}" data-umami-event="resume-pdf" data-umami-event-placement="sidebar">
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>
                 Resume PDF</a>
         </div>
@@ -113,7 +116,7 @@
         <section id="resume" class="section">
             <div class="section-head">
                 <h2><span class="hash">#</span> Resume</h2>
-                <a class="button button-outline" href="{{ pdf }}" data-goatcounter-click="resume-pdf-resume" data-goatcounter-title="Resume PDF (Resume section)">Download PDF <span aria-hidden="true">↓</span></a>
+                <a class="button button-outline" href="{{ pdf }}" data-umami-event="resume-pdf" data-umami-event-placement="resume">Download PDF <span aria-hidden="true">↓</span></a>
             </div>
 
             {# One rail for every role, newest first, so the scroll line moves through all of them in order. #}
@@ -142,7 +145,7 @@
                         {% if r.tags %}
                         <p class="tags">{% for t in r.tags %}
                             {%- if t.url -%}
-                            <a class="tag" href="{{ t.url }}" target="_blank" rel="noopener" data-goatcounter-click="tag-{{ t.label|lower|replace(' ', '-') }}" data-goatcounter-title="Tag: {{ t.label }}" style="--dot: {{ t.color }}" aria-label="{{ t.label }} website (opens in a new tab)">{{ t.label }}<span class="ext" aria-hidden="true">↗</span></a>
+                            <a class="tag" href="{{ t.url }}" target="_blank" rel="noopener" data-umami-event="tag" data-umami-event-tag="{{ t.label }}" style="--dot: {{ t.color }}" aria-label="{{ t.label }} website (opens in a new tab)">{{ t.label }}<span class="ext" aria-hidden="true">↗</span></a>
                             {%- else -%}
                             <span class="tag" style="--dot: {{ t.color }}">{{ t.label }}</span>
                             {%- endif -%}
@@ -198,7 +201,7 @@
             </form>
         </section>
 
-        <footer class="footer">© {{ year }} {{ basics.name }}<span class="visits" hidden></span></footer>
+        <footer class="footer">© {{ year }} {{ basics.name }}{% if visits %}<span class="visits"> · {{ "{:,}".format(visits) }} visits in the past year</span>{% endif %}</footer>
     </main>
 </div>
 </body>
