@@ -21,8 +21,7 @@ layout, the about text, and the tag colors and links (`TAG_COLORS` and `TAG_LINK
 `build.py`) live here.
 
 Each project card shows its `status` (`in progress` or `deployed`; `complete` shows nothing, and
-without a status a project with no `end` is in progress). A project with one link, `url` (the live
-site) or `source` (the code), links the whole card to it; one with both shows a button for each.
+without a status a project with no `end` is in progress).
 
 The build refuses a resume that contains a location, email or phone, so a private variant can't be
 published by mistake.

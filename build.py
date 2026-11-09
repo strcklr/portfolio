@@ -153,10 +153,7 @@ def skills(items: list[dict]) -> list[dict]:
 def view_model(data: dict, today: dt.date) -> dict:
     projects = [{
         "name": p["name"],
-        # The live site and the source: with one, the whole card links to it; with both, the card
-        # shows a link to each.
         "url": p.get("url"),
-        "source": p.get("source"),
         "summary": (p.get("summary") or "").strip(),
         "status": project_status(p),
         "tags": tags(p.get("keywords")),

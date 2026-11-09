@@ -84,9 +84,8 @@
             <h2><span class="hash">#</span> Projects</h2>
             <ul class="project-list">
                 {% for p in projects %}
-                {% set both = p.url and p.source %}
                 <li>
-                    {% if both %}<div class="project">{% else %}<a class="project" href="{{ p.url or p.source or github }}">{% endif %}
+                    <a class="project" href="{{ p.url or github }}">
                         <span class="project-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
                         </span>
@@ -100,16 +99,8 @@
                                 {% for t in p.tags %}<span class="tag" style="--dot: {{ t.color }}">{{ t.label }}</span>{% endfor %}
                             </span>
                         </span>
-                        {% if both %}
-                        <span class="project-links">
-                            <a class="button button-outline" href="{{ p.url }}">Live site <span aria-hidden="true">↗</span></a>
-                            <a class="button button-outline" href="{{ p.source }}">Source <span aria-hidden="true">↗</span></a>
-                        </span>
-                    </div>
-                        {% else %}
                         <span class="arrow" aria-hidden="true">→</span>
                     </a>
-                        {% endif %}
                 </li>
                 {% endfor %}
             </ul>
