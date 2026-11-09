@@ -92,7 +92,7 @@
                         <span class="project-body">
                             <span class="project-title">
                                 <strong>{{ p.name }}</strong>
-                                {% if p.in_progress %}<span class="status">in progress</span>{% endif %}
+                                {% if p.status != "complete" %}<span class="status status-{{ p.status | replace(' ', '-') }}">{{ p.status }}</span>{% endif %}
                             </span>
                             {% if p.summary %}<span class="project-summary">{{ p.summary }}</span>{% endif %}
                             <span class="tags">

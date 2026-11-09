@@ -18,6 +18,7 @@
     --dim: #8C8C8C;
     --accent: #458FFF;
     --accent-hover: #7FB0FF;
+    --live: #3FB950; /* a deployed project's status dot */
     --button: #2F6FE0; /* darker than --accent so white text passes contrast */
     --button-hover: #2560C8;
     --input: #343434;
@@ -42,7 +43,7 @@
     --bg: #FBF9F4; --surface: #FFFEFA; --chip: #F0ECE3; --pill: #F0ECE3; --pill-hover: #E6E1D6;
     --line: #E3DED3; --line-soft: #ECE8DF; --card-hover: #CFC8BA; --outline: #BDB6A8; --dot-past: #A6A094;
     --text: #1A1A1A; --text-2: #34322E; --muted: #57534C; --dim: #6B675F;
-    --accent: #1A1A1A; --accent-hover: #A8251C; --button: #A8251C; --button-hover: #8A1E17;
+    --accent: #1A1A1A; --accent-hover: #A8251C; --live: #2E7D32; --button: #A8251C; --button-hover: #8A1E17;
     --input: #F0ECE3; --input-text: #1A1A1A; --tag-fill: 35%;
     --font: var(--serif); --font-size: 18px; --hash: none; --num-code: none; --num-journal: inline;
 }
@@ -52,7 +53,7 @@
         --bg: #FBF9F4; --surface: #FFFEFA; --chip: #F0ECE3; --pill: #F0ECE3; --pill-hover: #E6E1D6;
         --line: #E3DED3; --line-soft: #ECE8DF; --card-hover: #CFC8BA; --outline: #BDB6A8; --dot-past: #A6A094;
         --text: #1A1A1A; --text-2: #34322E; --muted: #57534C; --dim: #6B675F;
-        --accent: #1A1A1A; --accent-hover: #A8251C; --button: #A8251C; --button-hover: #8A1E17;
+        --accent: #1A1A1A; --accent-hover: #A8251C; --live: #2E7D32; --button: #A8251C; --button-hover: #8A1E17;
         --input: #F0ECE3; --input-text: #1A1A1A; --tag-fill: 35%;
         --font: var(--serif); --font-size: 18px; --hash: none; --num-code: none; --num-journal: inline;
     }
@@ -189,6 +190,8 @@ a.tag:hover .ext, a.tag:focus-visible .ext { max-width: 1em; opacity: 0.8; margi
 .project-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 17px; }
 .status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--accent); }
 .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.status-deployed { color: var(--live); }
+.status-deployed::before { background: var(--live); }
 .project-summary { color: var(--muted); font-size: 14px; line-height: 1.5; }
 .project .tags { padding-top: 6px; }
 .project .tag { font-size: 12px; padding: 2px 9px; }
