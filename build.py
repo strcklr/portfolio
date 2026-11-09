@@ -16,7 +16,7 @@ import shutil
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from resumake.context import build_context, format_date
+from resumake.context import build_context, format_date, project_status
 from resumake.loader import load_resume
 
 ROOT = Path(__file__).resolve().parent
@@ -153,9 +153,12 @@ def skills(items: list[dict]) -> list[dict]:
 def view_model(data: dict, today: dt.date) -> dict:
     projects = [{
         "name": p["name"],
+        # The live site and the source: with one, the whole card links to it; with both, the card
+        # shows a link to each.
         "url": p.get("url"),
+        "source": p.get("source"),
         "summary": (p.get("summary") or "").strip(),
-        "in_progress": "end" not in p,
+        "status": project_status(p),
         "tags": tags(p.get("keywords")),
     } for p in data.get("projects", [])]
     profiles = {p["network"].lower(): p["url"] for p in data["basics"].get("profiles", [])}

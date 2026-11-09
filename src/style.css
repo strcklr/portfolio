@@ -18,6 +18,7 @@
     --dim: #8C8C8C;
     --accent: #458FFF;
     --accent-hover: #7FB0FF;
+    --live: #3FB950; /* a deployed project's status dot */
     --button: #2F6FE0; /* darker than --accent so white text passes contrast */
     --button-hover: #2560C8;
     --input: #343434;
@@ -42,7 +43,7 @@
     --bg: #FBF9F4; --surface: #FFFEFA; --chip: #F0ECE3; --pill: #F0ECE3; --pill-hover: #E6E1D6;
     --line: #E3DED3; --line-soft: #ECE8DF; --card-hover: #CFC8BA; --outline: #BDB6A8; --dot-past: #A6A094;
     --text: #1A1A1A; --text-2: #34322E; --muted: #57534C; --dim: #6B675F;
-    --accent: #1A1A1A; --accent-hover: #A8251C; --button: #A8251C; --button-hover: #8A1E17;
+    --accent: #1A1A1A; --accent-hover: #A8251C; --live: #2E7D32; --button: #A8251C; --button-hover: #8A1E17;
     --input: #F0ECE3; --input-text: #1A1A1A; --tag-fill: 35%;
     --font: var(--serif); --font-size: 18px; --hash: none; --num-code: none; --num-journal: inline;
 }
@@ -52,7 +53,7 @@
         --bg: #FBF9F4; --surface: #FFFEFA; --chip: #F0ECE3; --pill: #F0ECE3; --pill-hover: #E6E1D6;
         --line: #E3DED3; --line-soft: #ECE8DF; --card-hover: #CFC8BA; --outline: #BDB6A8; --dot-past: #A6A094;
         --text: #1A1A1A; --text-2: #34322E; --muted: #57534C; --dim: #6B675F;
-        --accent: #1A1A1A; --accent-hover: #A8251C; --button: #A8251C; --button-hover: #8A1E17;
+        --accent: #1A1A1A; --accent-hover: #A8251C; --live: #2E7D32; --button: #A8251C; --button-hover: #8A1E17;
         --input: #F0ECE3; --input-text: #1A1A1A; --tag-fill: 35%;
         --font: var(--serif); --font-size: 18px; --hash: none; --num-code: none; --num-journal: inline;
     }
@@ -175,24 +176,35 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 a.tag { color: var(--text-2); }
 a.tag:hover, a.tag:focus-visible { color: var(--text); text-decoration: none; }
 a.tag:hover::after, a.tag:focus-visible::after,
-.project:hover .tag::after, .project:focus-visible .tag::after { clip-path: circle(150% at 14px 50%); }
+a.project:hover .tag::after, a.project:focus-visible .tag::after { clip-path: circle(150% at 14px 50%); }
 .tag .ext { display: inline-block; max-width: 0; opacity: 0; overflow: hidden; margin-left: -6px; transition: max-width 200ms ease-out, opacity 200ms ease-out, margin 200ms ease-out; }
 a.tag:hover .ext, a.tag:focus-visible .ext { max-width: 1em; opacity: 0.8; margin-left: 0; }
 
 /* ---------- projects ---------- */
 .project-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .project { display: flex; align-items: center; gap: 16px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); }
-.project:hover { text-decoration: none; color: var(--text); border-color: var(--card-hover); }
+a.project:hover { text-decoration: none; color: var(--text); border-color: var(--card-hover); }
 .project-icon { flex: 0 0 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); color: var(--accent); }
 .project-icon svg { width: 22px; height: 22px; }
 .project-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .project-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 17px; }
 .status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--accent); }
 .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.status-deployed { color: var(--live); }
+.status-deployed::before { background: var(--live); }
 .project-summary { color: var(--muted); font-size: 14px; line-height: 1.5; }
 .project .tags { padding-top: 6px; }
 .project .tag { font-size: 12px; padding: 2px 9px; }
 .arrow { color: var(--muted); font-size: 18px; }
+/* A project with a live site and its source: a link to each instead of one link on the whole card. */
+.project-links { flex: 0 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.project-links .button { align-self: stretch; justify-content: center; min-height: 36px; padding: 0 14px; font-size: 14px; }
+@media (max-width: 640px) {
+    .project:has(.project-links) { flex-wrap: wrap; }
+    .project:has(.project-links) .project-body { flex-basis: 0; }
+    .project-links { flex: 1 0 100%; flex-direction: row; }
+    .project-links .button { flex: 1; }
+}
 
 /* ---------- resume: companies and role timeline ---------- */
 .company { display: flex; flex-direction: column; gap: 22px; padding: 28px 0 32px; border-bottom: 1px solid var(--line-soft); }
