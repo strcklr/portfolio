@@ -12,8 +12,12 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
+import os
 import shutil
+import urllib.request
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from resumake.context import build_context, format_date, project_status
@@ -35,6 +39,9 @@ TAG_COLORS = {
     "Claude": "#D97757",
 }
 DEFAULT_TAG_COLOR = "#8C8C8C"
+
+# The footer shows the past year's visits once there are more than this many.
+VISITS_SHOWN_FROM = 1000
 
 # Where each tag links: the project's home page. A tag without an entry is shown as plain text.
 TAG_LINKS = {
@@ -150,6 +157,54 @@ def skills(items: list[dict]) -> list[dict]:
     return out
 
 
+def umami(env=os.environ) -> dict | None:
+    """Umami's tracker settings (UMAMI_SRC, UMAMI_WEBSITE_ID), or None: then the page has no analytics."""
+    src, website = env.get("UMAMI_SRC", "").strip(), env.get("UMAMI_WEBSITE_ID", "").strip()
+    if not (src and website):
+        return None
+    if urlsplit(src).scheme != "https":
+        raise SystemExit("UMAMI_SRC must be an https:// URL")
+    return {"src": src, "website_id": website}
+
+
+def visits_past_year(config: dict | None, today: dt.date, env=os.environ, opener=urllib.request.urlopen) -> int | None:
+    """The past year's visits from Umami's API, for the footer, or None if that isn't set up or fails.
+
+    Umami's stats API needs a login, so this runs at build time (nightly) with a view-only user's
+    UMAMI_USERNAME and UMAMI_PASSWORD, and never in the browser. A failure only hides the count.
+    """
+    user, password = env.get("UMAMI_USERNAME"), env.get("UMAMI_PASSWORD")
+    if not (config and user and password):
+        return None
+    parts = urlsplit(config["src"])
+    base = f"{parts.scheme}://{parts.netloc}"
+
+    def call(path: str, body: dict | None = None, token: str | None = None) -> dict:
+        headers = {"Accept": "application/json", "User-Agent": "chasestrickler.com build"}
+        if body is not None:
+            headers["Content-Type"] = "application/json"
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+        req = urllib.request.Request(base + path, data=json.dumps(body).encode() if body is not None else None, headers=headers)
+        with opener(req, timeout=15) as res:
+            return json.load(res)
+
+    try:
+        token = call("/api/auth/login", {"username": user, "password": password})["token"]
+        end = dt.datetime.combine(today, dt.time.max, tzinfo=dt.timezone.utc)
+        start = end - dt.timedelta(days=365)
+        stats = call(
+            f"/api/websites/{config['website_id']}/stats?startAt={int(start.timestamp() * 1000)}&endAt={int(end.timestamp() * 1000)}",
+            token=token,
+        )
+        visits = stats["visits"]
+        # Umami 2 returns {"visits": {"value": n, ...}}; later versions return {"visits": n}.
+        return int(visits["value"] if isinstance(visits, dict) else visits)
+    except Exception as exc:  # noqa: BLE001 - the count is optional; the site must still build
+        print(f"warning: no visit count from Umami ({exc.__class__.__name__})")
+        return None
+
+
 def view_model(data: dict, today: dt.date) -> dict:
     projects = [{
         "name": p["name"],
@@ -192,7 +247,14 @@ def main(argv: list[str] | None = None) -> None:
 
     env = Environment(loader=FileSystemLoader(SRC), autoescape=select_autoescape(["html", "j2"]),
                       trim_blocks=True, lstrip_blocks=True)
-    html = env.get_template("index.html.j2").render(**view_model(data, dt.date.today()))
+    today = dt.date.today()
+    analytics = umami()
+    visits = visits_past_year(analytics, today)
+    html = env.get_template("index.html.j2").render(
+        **view_model(data, today),
+        umami=analytics,
+        visits=visits if visits and visits > VISITS_SHOWN_FROM else None,
+    )
     (out / "index.html").write_text(html, encoding="utf-8")
     for name in STATIC:
         shutil.copy2(SRC / name, out / name)

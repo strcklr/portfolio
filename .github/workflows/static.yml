@@ -52,6 +52,12 @@ jobs:
 
       - name: Build site
         run: python build.py resumes/resumes/tailored/public.yml --out _site
+        env:
+          # Analytics (see README.md); unset, the page has none.
+          UMAMI_SRC: ${{ vars.UMAMI_SRC }}
+          UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
+          UMAMI_USERNAME: ${{ secrets.UMAMI_USERNAME }}
+          UMAMI_PASSWORD: ${{ secrets.UMAMI_PASSWORD }}
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
